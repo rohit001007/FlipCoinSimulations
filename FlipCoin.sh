@@ -3,11 +3,10 @@
 Hcount=0
 Tcount=0
 
-for((i=0;i<21;i++))
+while [ $Hcount -le 21 ] | [ $Tcount -le 21 ]
 do
 	x1=$(expr $RANDOM % 10)
 	x2=$(expr $x1 % 2)
-
 
 	echo "Coin Tossed $i Times"
 	if [ $x2 -eq 0 ]
@@ -17,11 +16,24 @@ do
 
 	elif [ $x2 -eq 1 ]
         then
-             #echo -ne "Tail \n"
-	  Tcount=$(expr $Tcount + 1)
+        	  #echo -ne "Tail \n"
+    		  Tcount=$(expr $Tcount + 1)
+	fi
+
+if [ $Hcount -eq 21 ]
+then
+	echo "-----------------Head Wins 21 Times-------------"
+	x=$(( $Hcount - $Tcount ))
+	echo " Head Comes $x Times More than Tail"
+
+elif [ $Tcount -eq 21 ]
+then
+   echo "-----------------Tail Wins 11 Times-------------"
+	 x=$(( $Tcount - $Hcount ))
+        echo " Tail Comes $x Times More than Head"
+
 fi
+
+i=$(expr $i + 1)
+
 done
-
-echo -ne "\n * Head Comes $Hcount Times\n"
-echo -ne "\n * Tail Comes $Tcount Times\n"
-
