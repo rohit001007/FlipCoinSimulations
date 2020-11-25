@@ -28,12 +28,20 @@ then
 
 elif [ $Tcount -eq 21 ]
 then
-   echo "-----------------Tail Wins 11 Times-------------"
+   echo "-----------------Tail Wins 21 Times-------------"
 	 x=$(( $Tcount - $Hcount ))
         echo " Tail Comes $x Times More than Head"
+
+elif [ $Hcount -eq $Tcount ]
+then
+	echo "-------Tie-Then Continue-------"
+	continue
 
 fi
 
 i=$(expr $i + 1)
 
 done
+
+echo -ne "\n *  Total Head Win Is $Hcount\n"
+echo -ne "\n *  Total Tail Win Is $Tcount\n"
